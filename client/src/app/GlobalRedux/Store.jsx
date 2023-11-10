@@ -1,4 +1,5 @@
 'use client';
+import React from 'react';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import userSlice from './Features/user/userSlice';
 
