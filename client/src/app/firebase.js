@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyBUcZqLJd4aqBNmYEfGLm20u373CobSauc',
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: 'estate-ahmedashraf.firebaseapp.com',
   projectId: 'estate-ahmedashraf',
   storageBucket: 'estate-ahmedashraf.appspot.com',
