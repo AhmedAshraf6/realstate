@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { clearStore } from '../GlobalRedux/Features/user/userSlice';
 import { useRouter } from 'next/navigation';
 
-export default function page() {
+export default function Profile() {
   const dispatch = useDispatch();
   const router = useRouter();
   return (
