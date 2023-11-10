@@ -13,6 +13,7 @@ export default function Profile() {
   const router = useRouter();
   const { user } = useSelector((state) => state.user);
   const [file, setFile] = useState('');
+  const [mount, setMount] = useState(false);
   const [formData, setFormData] = useState({});
   const fileRef = useRef();
   // dispatch(clearStore());
@@ -51,6 +52,12 @@ export default function Profile() {
       uploadProfileImage(file);
     }
   }, [file]);
+  useEffect(() => {
+    setMount(true);
+  }, []);
+  if (!mount) {
+    return;
+  }
   console.log(formData);
   return (
     <div className='align-element mt-10 sm:mt-24'>
@@ -73,6 +80,7 @@ export default function Profile() {
           alt='profile'
           className='rounded-full w-24 h-24 object-cover cursor-pointer my-4 sm:my-6 mx-auto'
         />
+
         <form
           onSubmit={handleSubmit}
           className='flex flex-col gap-y-4 sm:gap-6'
