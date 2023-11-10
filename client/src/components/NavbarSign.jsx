@@ -9,7 +9,7 @@ export default function NavbarSign() {
 
   useEffect(() => {
     setMount(true);
-  });
+  }, []);
   if (!mount) {
     return;
   }

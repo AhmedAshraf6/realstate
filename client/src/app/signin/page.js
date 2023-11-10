@@ -46,14 +46,12 @@ export default function SignUp() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { email, password, username } = formData;
+    const { email, password } = formData;
     if (!email || !password) {
       return toast.error('Please fill all fields');
     }
     mutate(formData);
   };
-
-  console.log(data);
 
   return (
     <div className='align-element mt-10 sm:mt-15'>

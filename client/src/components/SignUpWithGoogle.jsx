@@ -40,7 +40,6 @@ export default function SignUpWithGoogle() {
       const auth = getAuth(app);
       const result = await signInWithPopup(auth, provider);
       const { displayName, email, photoURL } = result.user;
-      console.log(result.user);
       mutate({ displayName, email, photoURL });
     } catch (error) {
       toast.error(error);
@@ -50,7 +49,7 @@ export default function SignUpWithGoogle() {
     <button
       type='button'
       onClick={handleGoogleClick}
-      className='btn btn-error text-error-content text-xs sm:text-base h-full btn-sm sm:btn-md   mt-4 sm:mt-6 capitalize font-bold w-full flex flex-wrap'
+      className='btn btn-error text-error-content text-xs sm:text-base h-full btn-sm sm:btn-md mt-4 sm:mt-6 capitalize font-bold w-full flex flex-wrap'
     >
       <FcGoogle />
       <span> continue with google</span>
