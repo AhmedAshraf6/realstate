@@ -3,7 +3,11 @@ require('express-async-errors');
 
 const express = require('express');
 const app = express();
+const path = require('path');
+
+// Extra packages
 const cors = require('cors');
+const fileUpload = require('express-fileupload');
 
 // Connect db
 const connectDB = require('./db/connectDB');
@@ -20,7 +24,10 @@ const authRouter = require('./routes/authRoutes');
 app.use(cors());
 
 // Middilwares
+app.use(express.static(path.join(__dirname, './public')));
 app.use(express.json());
+app.use(fileUpload());
+
 app.use('/api/v1/user', userRouter);
 app.use('/api/v1/auth', authRouter);
 app.use(notFoundMiddleware);
