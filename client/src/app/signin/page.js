@@ -75,7 +75,7 @@ export default function SignUp() {
         </form>
         <SignUpWithGoogle />
         <div className='mt-4 sm:mt-6'>
-          <span>Don't have account ?</span>
+          <span>Don not have account ?</span>
           <Link href='/signup' className='text-primary mx-2 whitespace-nowrap'>
             Sign Up
           </Link>
