@@ -16,7 +16,7 @@ const errorHandlerMiddleware = require('./middleware/error-handler');
 const userRouter = require('./routes/userRoutes');
 const authRouter = require('./routes/authRoutes');
 
-// cors
+// extra packages
 app.use(cors());
 
 // Middilwares

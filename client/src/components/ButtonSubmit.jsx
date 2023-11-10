@@ -4,6 +4,7 @@ export default function ButtonSubmit({ button, isLoading }) {
     <button
       className='btn btn-neutral btn-sm sm:btn-md w-full text-xs sm:text-base'
       disabled={isLoading}
+      type='submit'
     >
       {isLoading ? <span className='loading loading-spinner'></span> : button}
     </button>

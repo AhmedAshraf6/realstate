@@ -15,9 +15,17 @@ export default function NavbarSign() {
   }
   return (
     <Link href={user?.username ? '/profile' : '/signin'}>
-      <li className='hidden sm:inline text-base-content hover:underline'>
-        {user?.username ? user?.username : 'Sign in'}
-      </li>
+      {user?.username ? (
+        <img
+          src={user?.avatar}
+          alt='profile'
+          className='w-7 h-7 rounded-full object-cover'
+        />
+      ) : (
+        <li className='hidden sm:inline text-base-content hover:underline'>
+          Sign In
+        </li>
+      )}
     </Link>
   );
 }

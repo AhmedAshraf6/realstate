@@ -15,10 +15,10 @@ export default function Header() {
             <input
               type='text'
               placeholder='Search'
-              className='input input-bordered  w-32 md:w-auto'
+              className='input input-bordered input-sm sm:input-md w-32 md:w-auto'
             />
           </div>
-          <FaSearch className='text-lg text-base-content absolute top-3 right-5' />
+          <FaSearch className='text-lg text-base-content absolute top-2 sm:top-3 right-5' />
         </form>
         <ul className='flex gap-4'>
           <Link href='/'>
