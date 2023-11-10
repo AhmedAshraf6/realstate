@@ -13,7 +13,7 @@ import { useRouter } from 'next/navigation';
 export default function SignUpWithGoogle() {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { isLoading, data, mutate } = useMutation({
+  const { isLoading, mutate } = useMutation({
     mutationFn: async ({ displayName, email, photoURL }) => {
       const { data } = await customFetch.post('/auth/google', {
         displayName,
