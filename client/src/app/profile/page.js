@@ -1,12 +1,16 @@
 'use client';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { clearStore } from '../GlobalRedux/Features/user/userSlice';
+import { clearStore, loginUser } from '../GlobalRedux/Features/user/userSlice';
 import { useRouter } from 'next/navigation';
 import { ButtonSubmit, InputField, Title } from '@/components';
 import { useEffect, useRef, useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
-import customFetch from '@/utils/axios';
+import customFetch, {
+  checkForUnauthorizedResponse,
+  domainUrl,
+} from '@/utils/axios';
+import { toast } from 'react-toastify';
 
 export default function Profile() {
   const dispatch = useDispatch();
@@ -18,15 +22,9 @@ export default function Profile() {
   const fileRef = useRef();
   // dispatch(clearStore());
   // router.push('/signin');
-  const handleSubmit = () => {
-    return;
-  };
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+
   const {
-    isLoading,
+    isLoading: isLoadingUpdateProfileImage,
     data,
     mutate: uploadProfileImage,
   } = useMutation({
@@ -44,9 +42,43 @@ export default function Profile() {
       setFormData({ ...formData, avatar: data.image.src });
     },
     onError: (error) => {
-      console.log(error);
+      checkForUnauthorizedResponse({ error, dispatch, router });
     },
   });
+  const {
+    isLoading: isLoadingUpdateUser,
+    data: dataUpdatedUser,
+    mutate,
+  } = useMutation({
+    mutationFn: async (dataSend) => {
+      const { data } = await customFetch.patch('/user/updateUser', dataSend);
+      return data;
+    },
+    onSuccess: (data) => {
+      dispatch(loginUser(data.user));
+      toast.success('Updated Success');
+    },
+    onError: (error) => {
+      checkForUnauthorizedResponse({ error, dispatch, router });
+    },
+  });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const sendedData = {
+      username: formData.username || user.username,
+      email: formData.email || user.email,
+      avatar: formData.avatar || user.avatar,
+    };
+    const { username, email, avatar } = sendedData;
+    if (!username || !avatar || !email) {
+      return toast.error('Please fill all fields');
+    }
+    mutate(sendedData);
+  };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
   useEffect(() => {
     if (file) {
       uploadProfileImage(file);
@@ -58,7 +90,7 @@ export default function Profile() {
   if (!mount) {
     return;
   }
-  console.log(formData);
+
   return (
     <div className='align-element mt-10 sm:mt-24'>
       <div className='max-w-lg mx-auto text-center'>
@@ -70,12 +102,15 @@ export default function Profile() {
           hidden
           accept='image/*'
         />
+
         <img
-          src={
+          src={`${
             formData.avatar
-              ? `http://localhost:5000${formData.avatar}`
-              : user.avatar
-          }
+              ? domainUrl + formData.avatar
+              : user?.avatar.startsWith('https')
+              ? user?.avatar
+              : domainUrl + user?.avatar
+          }`}
           onClick={() => fileRef.current.click()}
           alt='profile'
           className='rounded-full w-24 h-24 object-cover cursor-pointer my-4 sm:my-6 mx-auto'
@@ -89,21 +124,18 @@ export default function Profile() {
             placeHolder='Username'
             type='text'
             name='username'
+            defaultValue={formData.username || user?.username}
             handleChange={handleChange}
           />
           <InputField
             placeHolder='Email'
             type='email'
             name='email'
+            defaultValue={formData.email || user?.email}
             handleChange={handleChange}
           />
-          <InputField
-            placeHolder='Password'
-            type='password'
-            name='password'
-            handleChange={handleChange}
-          />
-          <ButtonSubmit button='Update' />
+
+          <ButtonSubmit button='Update' isLoading={isLoadingUpdateUser} />
           <button
             className='btn btn-accent btn-sm sm:btn-md w-full text-xs sm:text-base'
             type='button'
@@ -115,7 +147,13 @@ export default function Profile() {
           <span className='text-error font-semibold cursor-pointer'>
             Delete Account
           </span>
-          <span className='text-error font-semibold cursor-pointer'>
+          <span
+            className='text-error font-semibold cursor-pointer'
+            onClick={() => {
+              dispatch(clearStore());
+              router.push('/signin');
+            }}
+          >
             Sign Out
           </span>
         </div>

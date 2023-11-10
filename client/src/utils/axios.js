@@ -1,11 +1,12 @@
 import { clearStore } from '@/app/GlobalRedux/Features/user/userSlice';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 const customFetch = axios.create({
   baseURL: 'http://localhost:5000/api/v1',
 });
-
+export const domainUrl = 'http://localhost:5000';
 customFetch.interceptors.request.use((config) => {
   const token = Cookies.get('token');
 
@@ -14,12 +15,14 @@ customFetch.interceptors.request.use((config) => {
   }
   return config;
 });
-export const checkForUnauthorizedResponse = ({ error, dispatch }) => {
+
+export const checkForUnauthorizedResponse = ({ error, dispatch, router }) => {
   if (error?.response?.status === 401) {
     dispatch(clearStore());
+    router.push('/signin');
     return toast.error('Unauthorized! Logging Out...');
   }
-  return toast.error(error?.message || error?.response?.data);
+  return toast.error(error?.response?.data?.msg || error?.message);
 };
 export const removeCookies = () => {
   return Cookies.remove('token');

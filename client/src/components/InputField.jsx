@@ -4,7 +4,7 @@ export default function InputField({
   placeHolder,
   type,
   name,
-  value,
+  defaultValue,
   handleChange,
 }) {
   return (
@@ -14,7 +14,7 @@ export default function InputField({
         className='input input-bordered input-sm sm:input-md w-full'
         name={name}
         type={type}
-        value={value}
+        defaultValue={defaultValue}
         onChange={handleChange}
       />
     </div>

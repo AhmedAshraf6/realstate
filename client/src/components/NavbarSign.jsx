@@ -1,4 +1,5 @@
 'use client';
+import { domainUrl } from '@/utils/axios';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -17,7 +18,11 @@ export default function NavbarSign() {
     <Link href={user?.username ? '/profile' : '/signin'}>
       {user?.username ? (
         <img
-          src={user?.avatar}
+          src={`${
+            user.avatar.startsWith('https')
+              ? user.avatar
+              : domainUrl + user.avatar
+          }`}
           alt='profile'
           className='w-7 h-7 rounded-full object-cover'
         />
