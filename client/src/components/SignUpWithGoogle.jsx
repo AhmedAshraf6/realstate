@@ -23,13 +23,12 @@ export default function SignUpWithGoogle() {
       return data;
     },
     onSuccess: (data) => {
-      // Cookies.set('token', data.token, {
-      //   expires: 1,
-      //   secure: true,
-      // });
-      // dispatch(loginUser(data.user));
-      console.log(data);
-      // router.push('/');
+      Cookies.set('token', data.token, {
+        expires: 1,
+        secure: true,
+      });
+      dispatch(loginUser(data.user));
+      router.push('/');
     },
     onError: (error) => {
       checkForUnauthorizedResponse(error, dispatch);
