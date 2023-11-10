@@ -24,6 +24,11 @@ const UserSchema = new mongoose.Schema({
     required: [true, 'Please provide password'],
     minlength: 5,
   },
+  avatar: {
+    type: String,
+    default:
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtYqXjw6IR_opev4UADLjT8TPcLmWYQsx_YQ&usqp=CAU',
+  },
   role: {
     type: String,
     enum: ['admin', 'user'],
@@ -39,7 +44,7 @@ UserSchema.pre('save', async function () {
 
 UserSchema.methods.createJWT = function () {
   return jwt.sign(
-    { userId: this._id, name: this.username },
+    { userId: this._id, username: this.username },
     process.env.JWT_SECRET,
     {
       expiresIn: process.env.JWT_LIFETIME,
