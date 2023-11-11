@@ -121,19 +121,18 @@ export default function Profile() {
             hidden
             accept='image/*'
           />
-
-          {/* <img
-          src={`${
-            formData.avatar
-              ? domainUrl + formData.avatar
-              : user?.avatar.startsWith('https')
-              ? user?.avatar
-              : domainUrl + user?.avatar
-          }`}
-          onClick={() => fileRef.current.click()}
-          alt='profile'
-          className='rounded-full w-24 h-24 object-cover cursor-pointer my-4 sm:my-6 mx-auto'
-        /> */}
+          <img
+            src={`${
+              formData.avatar
+                ? domainUrl + formData.avatar
+                : user?.avatar.startsWith('https')
+                ? user?.avatar
+                : domainUrl + user?.avatar
+            }`}
+            onClick={() => fileRef.current.click()}
+            alt='profile'
+            className='rounded-full w-24 h-24 object-cover cursor-pointer my-4 sm:my-6 mx-auto'
+          />
 
           <form
             onSubmit={handleSubmit}
@@ -175,7 +174,7 @@ export default function Profile() {
               className='text-error font-semibold cursor-pointer'
               onClick={() => {
                 dispatch(clearStore());
-                router.push('/signin');
+                router.push('/');
               }}
             >
               Sign Out

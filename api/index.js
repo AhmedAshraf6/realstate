@@ -19,6 +19,7 @@ const errorHandlerMiddleware = require('./middleware/error-handler');
 // Routes
 const userRouter = require('./routes/userRoutes');
 const authRouter = require('./routes/authRoutes');
+const listingRouter = require('./routes/listingRoutes');
 
 // extra packages
 app.use(cors());
@@ -30,6 +31,7 @@ app.use(fileUpload());
 
 app.use('/api/v1/user', userRouter);
 app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/listing', listingRouter);
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 

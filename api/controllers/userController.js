@@ -1,9 +1,7 @@
 const User = require('../models/User');
 const { StatusCodes } = require('http-status-codes');
-const path = require('path');
 const CustomError = require('../errors');
-const createTokenUser = require('../utils/createTokenUser');
-const jwt = require('jsonwebtoken');
+const path = require('path');
 
 const uploadProfileImage = async (req, res) => {
   if (!req.files) {
