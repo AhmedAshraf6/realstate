@@ -17,12 +17,13 @@ customFetch.interceptors.request.use((config) => {
 });
 
 export const checkForUnauthorizedResponse = ({ error, dispatch, router }) => {
-  if (error?.response?.status === 401) {
+  if (error.response.status === 401) {
     dispatch(clearStore());
     router.push('/signin');
-    return toast.error('Unauthorized! Logging Out...');
+    toast.error('Unauthorized! ');
+    return;
   }
-  return toast.error(error?.response?.data?.msg || error?.message);
+  return toast.error(error.message || error?.response?.data);
 };
 export const removeCookies = () => {
   return Cookies.remove('token');

@@ -38,7 +38,7 @@ export default function SignUp() {
     },
     onError: (error) => {
       console.log(error);
-      checkForUnauthorizedResponse({ error, dispatch });
+      checkForUnauthorizedResponse({ error, dispatch, router });
     },
   });
 

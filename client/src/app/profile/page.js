@@ -11,6 +11,7 @@ import customFetch, {
   domainUrl,
 } from '@/utils/axios';
 import { toast } from 'react-toastify';
+import { ConfirmModal } from '@/components/modals';
 
 export default function Profile() {
   const dispatch = useDispatch();
@@ -20,6 +21,8 @@ export default function Profile() {
   const [mount, setMount] = useState(false);
   const [formData, setFormData] = useState({});
   const fileRef = useRef();
+  const [open, setOpen] = useState(false);
+  const handleToggle = () => setOpen((prev) => !prev);
   // dispatch(clearStore());
   // router.push('/signin');
 
@@ -45,6 +48,21 @@ export default function Profile() {
       checkForUnauthorizedResponse({ error, dispatch, router });
     },
   });
+  const { isLoading: isLoadingDeleteAccount, mutate: deleteAccount } =
+    useMutation({
+      mutationFn: async () => {
+        const { data } = await customFetch.delete('/user/deleteUser');
+        console.log(data);
+        return data;
+      },
+      onSuccess: () => {
+        dispatch(clearStore());
+        router.push('/signin');
+      },
+      onError: (error) => {
+        checkForUnauthorizedResponse({ error, dispatch, router });
+      },
+    });
   const {
     isLoading: isLoadingUpdateUser,
     data: dataUpdatedUser,
@@ -92,18 +110,19 @@ export default function Profile() {
   }
 
   return (
-    <div className='align-element mt-10 sm:mt-24'>
-      <div className='max-w-lg mx-auto text-center'>
-        <Title title='Profile' />
-        <input
-          onChange={(e) => setFile(e.target.files[0])}
-          type='file'
-          ref={fileRef}
-          hidden
-          accept='image/*'
-        />
+    <>
+      <div className='align-element mt-10 sm:mt-24'>
+        <div className='max-w-lg mx-auto text-center'>
+          <Title title='Profile' />
+          <input
+            onChange={(e) => setFile(e.target.files[0])}
+            type='file'
+            ref={fileRef}
+            hidden
+            accept='image/*'
+          />
 
-        <img
+          {/* <img
           src={`${
             formData.avatar
               ? domainUrl + formData.avatar
@@ -114,50 +133,63 @@ export default function Profile() {
           onClick={() => fileRef.current.click()}
           alt='profile'
           className='rounded-full w-24 h-24 object-cover cursor-pointer my-4 sm:my-6 mx-auto'
-        />
+        /> */}
 
-        <form
-          onSubmit={handleSubmit}
-          className='flex flex-col gap-y-4 sm:gap-6'
-        >
-          <InputField
-            placeHolder='Username'
-            type='text'
-            name='username'
-            defaultValue={formData.username || user?.username}
-            handleChange={handleChange}
-          />
-          <InputField
-            placeHolder='Email'
-            type='email'
-            name='email'
-            defaultValue={formData.email || user?.email}
-            handleChange={handleChange}
-          />
+          <form
+            onSubmit={handleSubmit}
+            className='flex flex-col gap-y-4 sm:gap-6'
+          >
+            <InputField
+              placeHolder='Username'
+              type='text'
+              name='username'
+              defaultValue={formData.username || user?.username}
+              handleChange={handleChange}
+            />
+            <InputField
+              placeHolder='Email'
+              type='email'
+              name='email'
+              defaultValue={formData.email || user?.email}
+              handleChange={handleChange}
+            />
 
-          <ButtonSubmit button='Update' isLoading={isLoadingUpdateUser} />
-          <button
-            className='btn btn-accent btn-sm sm:btn-md w-full text-xs sm:text-base'
-            type='button'
-          >
-            Create Listing
-          </button>
-        </form>
-        <div className='flex justify-between gap-2 mt-4 sm:mt-6'>
-          <span className='text-error font-semibold cursor-pointer'>
-            Delete Account
-          </span>
-          <span
-            className='text-error font-semibold cursor-pointer'
-            onClick={() => {
-              dispatch(clearStore());
-              router.push('/signin');
-            }}
-          >
-            Sign Out
-          </span>
+            <ButtonSubmit button='Update' isLoading={isLoadingUpdateUser} />
+            <button
+              className='btn btn-accent btn-sm sm:btn-md w-full text-xs sm:text-base'
+              type='button'
+            >
+              Create Listing
+            </button>
+          </form>
+          <div className='flex justify-between gap-2 mt-4 sm:mt-6'>
+            <span
+              className='text-error font-semibold cursor-pointer'
+              onClick={handleToggle}
+            >
+              Delete Account
+            </span>
+            {/* Open the modal using document.getElementById('ID').showModal() method */}
+
+            <span
+              className='text-error font-semibold cursor-pointer'
+              onClick={() => {
+                dispatch(clearStore());
+                router.push('/signin');
+              }}
+            >
+              Sign Out
+            </span>
+          </div>
         </div>
       </div>
-    </div>
+      {open && (
+        <ConfirmModal
+          open={open}
+          handleToggle={handleToggle}
+          confirm={deleteAccount}
+        />
+      )}
+    </>
   );
 }

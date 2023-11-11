@@ -3,6 +3,8 @@ const { StatusCodes } = require('http-status-codes');
 const path = require('path');
 const CustomError = require('../errors');
 const createTokenUser = require('../utils/createTokenUser');
+const jwt = require('jsonwebtoken');
+
 const uploadProfileImage = async (req, res) => {
   if (!req.files) {
     throw new CustomError.BadRequestError('No File Uploaded');
@@ -26,23 +28,38 @@ const updateUser = async (req, res) => {
   if (!email || !username || !avatar) {
     throw new CustomError.BadRequestError('Please provide all values');
   }
-  const user = await User.findOneAndUpdate(
-    { _id: req.user.userId },
-    {
-      email,
-      username,
-      avatar,
-    },
-    {
-      new: true,
-      runValidators: true,
-    }
-  );
+  // const user = await User.findOneAndUpdate(
+  //   { _id: req.user.userId },
+  //   {
+  //     email,
+  //     username,
+  //     avatar,
+  //   },
+  //   {
+  //     new: true,
+  //     runValidators: true,
+  //   }
+  // );
+  const user = await User.findById(req.user.userId);
+  if (!user) {
+    throw new CustomError.NotFoundError('User not exists');
+  }
 
-  const tokenUser = createTokenUser(user);
-  res.status(StatusCodes.OK).json({ user: tokenUser });
+  // const tokenUser = createTokenUser(user);
+  res.status(StatusCodes.OK).son({ user: 'error here' });
 };
+
+const deleteUser = async (req, res) => {
+  const user = await User.findOne({ _id: req.user.userId });
+  if (!user) {
+    throw new CustomError.NotFoundError('User not exists');
+  }
+  user.remove();
+  res.status(StatusCodes.OK).json({ msg: 'deleted success' });
+};
+
 module.exports = {
   uploadProfileImage,
   updateUser,
+  deleteUser,
 };
