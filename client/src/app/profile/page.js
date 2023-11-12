@@ -12,6 +12,7 @@ import customFetch, {
 } from '@/utils/axios';
 import { toast } from 'react-toastify';
 import { ConfirmModal } from '@/components/modals';
+import Link from 'next/link';
 
 export default function Profile() {
   const dispatch = useDispatch();
@@ -154,12 +155,12 @@ export default function Profile() {
             />
 
             <ButtonSubmit button='Update' isLoading={isLoadingUpdateUser} />
-            <button
+            <Link
               className='btn btn-accent btn-sm sm:btn-md w-full text-xs sm:text-base'
-              type='button'
+              href='profile/create-listing'
             >
               Create Listing
-            </button>
+            </Link>
           </form>
           <div className='flex justify-between gap-2 mt-4 sm:mt-6'>
             <span

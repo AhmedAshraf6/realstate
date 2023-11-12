@@ -33,12 +33,12 @@ const ListingSchema = new mongoose.Schema(
     bathrooms: {
       type: Number,
       required: [true, 'Please provide bathrooms'],
-      min: 0,
+      min: 1,
     },
     bedrooms: {
       type: Number,
       required: [true, 'Please provide bedrooms'],
-      min: 0,
+      min: 1,
     },
     furnished: {
       type: Boolean,

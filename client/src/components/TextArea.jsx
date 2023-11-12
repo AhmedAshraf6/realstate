@@ -1,29 +1,20 @@
 import React from 'react';
 
-export default function InputField({
+export default function TextArea({
   placeHolder,
-  type,
+
   name,
   defaultValue,
   handleChange,
-  min,
-  max,
-  minLength,
-  maxLength,
 }) {
   return (
     <div className='form-control w-full'>
-      <input
+      <textarea
         placeholder={placeHolder}
-        className='input input-bordered input-sm sm:input-md w-full'
+        className='textarea textarea-bordered'
         name={name}
-        type={type}
         defaultValue={defaultValue}
         onChange={handleChange}
-        min={min}
-        max={max}
-        minLength={minLength}
-        maxLength={maxLength}
       />
     </div>
   );

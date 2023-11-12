@@ -1,6 +1,8 @@
 const User = require('../models/User');
 const { StatusCodes } = require('http-status-codes');
 const CustomError = require('../errors');
+const createTokenUser = require('../utils/createTokenUser');
+
 const path = require('path');
 
 const uploadProfileImage = async (req, res) => {
@@ -26,25 +28,17 @@ const updateUser = async (req, res) => {
   if (!email || !username || !avatar) {
     throw new CustomError.BadRequestError('Please provide all values');
   }
-  // const user = await User.findOneAndUpdate(
-  //   { _id: req.user.userId },
-  //   {
-  //     email,
-  //     username,
-  //     avatar,
-  //   },
-  //   {
-  //     new: true,
-  //     runValidators: true,
-  //   }
-  // );
+
   const user = await User.findById(req.user.userId);
   if (!user) {
     throw new CustomError.NotFoundError('User not exists');
   }
-
-  // const tokenUser = createTokenUser(user);
-  res.status(StatusCodes.OK).son({ user: 'error here' });
+  user.email = email;
+  user.username = username;
+  user.avatar = avatar;
+  user.save();
+  const tokenUser = createTokenUser(user);
+  res.status(StatusCodes.OK).json({ user: tokenUser });
 };
 
 const deleteUser = async (req, res) => {
