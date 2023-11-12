@@ -23,6 +23,7 @@ const uploadProfileImage = async (req, res) => {
     .status(StatusCodes.OK)
     .json({ image: { src: `/uploads/${productImage.name}` } });
 };
+
 const updateUser = async (req, res) => {
   const { email, username, avatar } = req.body;
   if (!email || !username || !avatar) {
