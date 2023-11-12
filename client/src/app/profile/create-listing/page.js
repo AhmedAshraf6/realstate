@@ -173,7 +173,10 @@ export default function CreateListing() {
           </div>
           {formData.images.length > 0 &&
             formData.images.map((image, index) => (
-              <div className='flex justify-between gap-3 items-center border-2 border-base-300 p-3'>
+              <div
+                className='flex justify-between gap-3 items-center border-2 border-base-300 p-3'
+                key={index}
+              >
                 <Image
                   src={`${domainUrl + image}`}
                   alt='image'
