@@ -3,7 +3,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { clearStore, loginUser } from '../GlobalRedux/Features/user/userSlice';
 import { useRouter } from 'next/navigation';
-import { ButtonSubmit, InputField, Title } from '@/components';
+import { AllListings, ButtonSubmit, InputField, Title } from '@/components';
 import { useEffect, useRef, useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import customFetch, {
@@ -20,6 +20,7 @@ export default function Profile() {
   const { user } = useSelector((state) => state.user);
   const [file, setFile] = useState('');
   const [mount, setMount] = useState(false);
+  const [showListing, setShowListing] = useState(false);
   const [formData, setFormData] = useState({});
   const fileRef = useRef();
   const [open, setOpen] = useState(false);
@@ -180,6 +181,16 @@ export default function Profile() {
             >
               Sign Out
             </span>
+          </div>
+          {/* Show Listing */}
+          <div className='mt-4 sm:mt-6'>
+            <span
+              className='text-accent font-semibold cursor-pointer'
+              onClick={() => setShowListing(!showListing)}
+            >
+              Show listings
+            </span>
+            {showListing && <AllListings />}
           </div>
         </div>
       </div>

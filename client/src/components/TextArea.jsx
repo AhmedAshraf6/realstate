@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function TextArea({
   placeHolder,
-
+  required,
   name,
   defaultValue,
   handleChange,
@@ -15,6 +15,7 @@ export default function TextArea({
         name={name}
         defaultValue={defaultValue}
         onChange={handleChange}
+        required={required}
       />
     </div>
   );

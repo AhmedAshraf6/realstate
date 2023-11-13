@@ -27,7 +27,7 @@ const ListingSchema = new mongoose.Schema(
     },
     discountedPrice: {
       type: Number,
-      default: 0,
+      required: [true, 'discountedPrice'],
       min: 0,
     },
     bathrooms: {

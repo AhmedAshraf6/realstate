@@ -10,6 +10,8 @@ export default function InputField({
   max,
   minLength,
   maxLength,
+  value,
+  required,
 }) {
   return (
     <div className='form-control w-full'>
@@ -24,6 +26,8 @@ export default function InputField({
         max={max}
         minLength={minLength}
         maxLength={maxLength}
+        value={value}
+        required={required}
       />
     </div>
   );

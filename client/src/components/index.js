@@ -6,3 +6,5 @@ export { default as ButtonSubmit } from './ButtonSubmit';
 export { default as Title } from './Title';
 export { default as NavbarSign } from './NavbarSign';
 export { default as TextArea } from './TextArea';
+export { default as Loading } from './Loading';
+export { default as AllListings } from './AllListings';
