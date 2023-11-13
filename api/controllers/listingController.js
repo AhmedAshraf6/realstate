@@ -43,6 +43,13 @@ const getUserLists = async (req, res) => {
   const listings = await Listing.find({ userRef: req.user.userId });
   res.status(StatusCodes.OK).json({ listings });
 };
+const getSingleList = async (req, res) => {
+  const singleList = await Listing.findOne({ _id: req.params.id });
+  if (!singleList) {
+    throw new CustomError.NotFoundError(`No List with id : ${req.params.id}`);
+  }
+  res.status(StatusCodes.OK).json({ singleList });
+};
 const deleteListing = async (req, res) => {
   const { id: listId } = req.params;
 
@@ -55,9 +62,45 @@ const deleteListing = async (req, res) => {
   checkPermissions(req.user, list.userRef);
   await list.remove();
   res.status(StatusCodes.OK).json({ msg: 'Success! List removed.' });
+};
+const updateListing = async (req, res) => {
+  const { id: listId } = req.params;
+  const {
+    name,
+    description,
+    regularPrice,
+    discountedPrice,
+    address,
+    bathrooms,
+    bedrooms,
+    furnished,
+    parking,
+    type,
+    offer,
+    imageUrls,
+  } = req.body;
+  const list = await Listing.findOne({ _id: listId });
 
-  // const listings = await Listing.find({ userRef: req.user.userId });
-  // res.status(StatusCodes.OK).json({ listings });
+  if (!list) {
+    throw new CustomError.NotFoundError(`No List with id : ${listId}`);
+  }
+
+  checkPermissions(req.user, list.userRef);
+  list.name = name;
+  list.description = description;
+  list.regularPrice = regularPrice;
+  list.discountedPrice = discountedPrice;
+  list.address = address;
+  list.bathrooms = bathrooms;
+  list.bedrooms = bedrooms;
+  list.furnished = furnished;
+  list.parking = parking;
+  list.type = type;
+  list.offer = offer;
+  list.imageUrls = imageUrls;
+
+  await list.save();
+  res.status(StatusCodes.OK).json({ list });
 };
 
 module.exports = {
@@ -65,4 +108,6 @@ module.exports = {
   uploadListingImages,
   getUserLists,
   deleteListing,
+  updateListing,
+  getSingleList,
 };

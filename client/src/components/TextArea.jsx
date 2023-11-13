@@ -6,6 +6,7 @@ export default function TextArea({
   name,
   defaultValue,
   handleChange,
+  value,
 }) {
   return (
     <div className='form-control w-full'>
@@ -16,6 +17,7 @@ export default function TextArea({
         defaultValue={defaultValue}
         onChange={handleChange}
         required={required}
+        value={value}
       />
     </div>
   );

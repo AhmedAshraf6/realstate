@@ -103,7 +103,7 @@ export default function AllListings() {
                 </span>
                 <Link
                   className='text-accent font-bold cursor-pointer'
-                  href={`edit-listing/${list._id}`}
+                  href={`profile/edit-listing/${list._id}`}
                 >
                   Edit
                 </Link>
