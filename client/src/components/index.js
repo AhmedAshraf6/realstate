@@ -8,3 +8,4 @@ export { default as NavbarSign } from './NavbarSign';
 export { default as TextArea } from './TextArea';
 export { default as Loading } from './Loading';
 export { default as AllListings } from './AllListings';
+export { default as SingleListSlider } from './SingleListSlider';
