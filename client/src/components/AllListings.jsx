@@ -29,6 +29,9 @@ export default function AllListings() {
       const { data } = await customFetch('/listing/getUserLists');
       return data.listings;
     },
+    onError: () => {
+      checkForUnauthorizedResponse({ error, dispatch, router });
+    },
   });
   // Delete Listing
   const { isLoading: isLoadingDeleteListing, mutate: deleteList } = useMutation(
@@ -51,9 +54,7 @@ export default function AllListings() {
   if (isLoading || isLoadingDeleteListing) {
     return <Loading />;
   }
-  if (isError) {
-    return checkForUnauthorizedResponse({ error, dispatch, router });
-  }
+
   // console.log(listings);
   // return;
   return (

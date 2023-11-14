@@ -9,9 +9,10 @@ const {
   deleteListing,
   updateListing,
   getSingleList,
+  getAllLists,
 } = require('../controllers/listingController');
 
-router.route('/').post(authenticateUser, createListing);
+router.route('/').post(authenticateUser, createListing).get(getAllLists);
 
 router.route('/getUserLists').get(authenticateUser, getUserLists);
 router
