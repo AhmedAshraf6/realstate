@@ -6,6 +6,9 @@ import { toast } from 'react-toastify';
 const customFetch = axios.create({
   baseURL: 'http://localhost:5000/api/v1',
 });
+export const customFetchNoAuth = axios.create({
+  baseURL: 'http://localhost:5000/api/v1',
+});
 export const domainUrl = 'http://localhost:5000';
 customFetch.interceptors.request.use((config) => {
   const token = Cookies.get('token');

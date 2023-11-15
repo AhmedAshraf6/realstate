@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
           <ReduxProvider>
             <Header />
             {children}
-            <Footer />
+            {/* <Footer /> */}
           </ReduxProvider>
           <ToastContainer position='top-center' />
         </ReactQueryProvider>

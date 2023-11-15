@@ -1,5 +1,5 @@
-import { SingleListSlider, Title } from '@/components';
-import { checkForUnauthorizedResponse, domainUrl } from '@/utils/axios';
+import { SingleListSlider } from '@/components';
+import { domainUrl } from '@/utils/axios';
 import React from 'react';
 
 import { IoLocationSharp } from 'react-icons/io5';
@@ -9,14 +9,9 @@ import { RiParkingBoxFill } from 'react-icons/ri';
 import { MdChair } from 'react-icons/md';
 
 async function getData(listId) {
-  const res = await fetch(`${domainUrl}/api/v1/listing/${listId}`);
-  // The return value is *not* serialized
-  // You can return Date, Map, Set, etc.
-
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data');
-  }
+  const res = await fetch(`${domainUrl}/api/v1/listing/${listId}`, {
+    cache: 'no-store',
+  });
 
   return res.json();
 }

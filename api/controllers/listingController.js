@@ -11,31 +11,38 @@ const createListing = async (req, res) => {
 const getAllLists = async (req, res) => {
   const { search, type, offer, parking, furnished, sort } = req.query;
   const queryObject = {};
-  if (type) {
+  if (type && type !== 'all') {
     queryObject.type = type;
   }
-  if (offer) {
-    queryObject.offer = offer === 'true' ? true : false;
+  if (offer && offer !== 'false') {
+    queryObject.offer = true;
   }
-  if (parking) {
-    queryObject.parking = parking === 'true' ? true : false;
+
+  if (parking && parking !== 'false') {
+    queryObject.parking = true;
   }
-  if (furnished) {
-    queryObject.furnished = furnished === 'true' ? true : false;
+  if (furnished && furnished !== 'false') {
+    queryObject.furnished = true;
   }
   if (search) {
     queryObject.name = { $regex: search, $options: 'i' };
   }
   let result = Listing.find(queryObject);
   // sort
-  if (sort) {
-    const sortList = sort.split(',').join(' ');
-    result = result.sort(sortList);
-  } else {
+  if (sort === 'latest') {
+    result = result.sort('-createdAt');
+  }
+  if (sort === 'oldest') {
     result = result.sort('createdAt');
   }
+  if (sort === 'high to low') {
+    result = result.sort('-regularPrice');
+  }
+  if (sort === 'low to high') {
+    result = result.sort('regularPrice');
+  }
   const page = Number(req.query.page) || 1;
-  const limit = 10;
+  const limit = Number(req.query.limit) || 6;
   const skip = (page - 1) * limit;
 
   result = result.skip(skip).limit(limit);

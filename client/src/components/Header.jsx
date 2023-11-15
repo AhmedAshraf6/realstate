@@ -6,10 +6,13 @@ export default function Header() {
   return (
     <nav className='bg-base-300 shadow-md'>
       <div className=' align-element flex justify-between items-center py-2 gap-x-3'>
-        <h1 className='font-bold text-sm sm:text-lg text-base-content flex flex-wrap gap-x-1'>
+        <Link
+          className='font-bold text-sm sm:text-lg text-base-content flex flex-wrap gap-x-1'
+          href='/'
+        >
           <span>ahmed</span>
           <span>Estate</span>
-        </h1>
+        </Link>
         <form className='relative'>
           <div className='form-control '>
             <input

@@ -1,11 +1,11 @@
 'use client';
-import React from 'react';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import userSlice from './Features/user/userSlice';
+import filterSlice from './Features/filters/filterSlice';
 
 const rootReducer = combineReducers({
   user: userSlice,
-  //add all your reducers here
+  filters: filterSlice,
 });
 
 export const store = configureStore({
