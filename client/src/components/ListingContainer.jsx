@@ -48,7 +48,7 @@ export default function ListingContainer() {
       </div>
       <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-3'>
         {data?.listings.map((list) => (
-          <List list={list} key={list_id} />
+          <List list={list} key={list._id} />
         ))}
       </div>
       {data?.numOfPages > 1 && (
