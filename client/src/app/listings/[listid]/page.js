@@ -1,4 +1,4 @@
-import { SingleListSlider } from '@/components';
+import { ButtonContactWithSeller, SingleListSlider } from '@/components';
 import { domainUrl } from '@/utils/axios';
 import React from 'react';
 
@@ -7,6 +7,7 @@ import { TbBedFilled } from 'react-icons/tb';
 import { FaBath } from 'react-icons/fa6';
 import { RiParkingBoxFill } from 'react-icons/ri';
 import { MdChair } from 'react-icons/md';
+import Link from 'next/link';
 
 async function getData(listId) {
   const res = await fetch(`${domainUrl}/api/v1/listing/${listId}`, {
@@ -18,6 +19,7 @@ async function getData(listId) {
 
 export default async function page({ params }) {
   const { singleList } = await getData(params.listid);
+  console.log(singleList);
   return (
     <div>
       <SingleListSlider images={singleList?.imageUrls} />
@@ -76,6 +78,7 @@ export default async function page({ params }) {
             {singleList?.furnished ? 'Furnished' : 'Not furnished'}
           </div>
         </div>
+        <ButtonContactWithSeller sellerId={singleList?.userRef} />
       </div>
     </div>
   );

@@ -27,9 +27,7 @@ export default function NavbarSign() {
           className='w-7 h-7 rounded-full object-cover'
         />
       ) : (
-        <li className='hidden sm:inline text-base-content hover:underline'>
-          Sign In
-        </li>
+        <li className='text-base-content hover:underline'>Sign In</li>
       )}
     </Link>
   );

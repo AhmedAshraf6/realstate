@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 import { FaSearch } from 'react-icons/fa';
-import { NavbarSign } from '.';
+import { ChatIcon, NavbarSign } from '.';
 export default function Header() {
   return (
     <nav className='bg-base-300 shadow-md'>
@@ -34,6 +34,7 @@ export default function Header() {
               About
             </li>
           </Link>
+          <ChatIcon />
           <NavbarSign />
         </ul>
       </div>

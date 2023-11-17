@@ -5,11 +5,15 @@ import {
   addUserToLocalStorage,
   getUserFromLocalStorage,
   removeUserFromLocalStorage,
+  getOpenedUserFromLocalStorage,
+  addOpenedUserFromLocalStorage,
+  removeOpenedUserFromLocalStorage,
 } from '@/utils/localStorage';
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   user: getUserFromLocalStorage(),
+  openedUser: getOpenedUserFromLocalStorage(),
 };
 
 export const userSlice = createSlice({
@@ -25,9 +29,13 @@ export const userSlice = createSlice({
       removeCookies();
       removeUserFromLocalStorage();
     },
+    setOpenedUser: (state, { payload }) => {
+      state.openedUser = payload;
+      addOpenedUserFromLocalStorage(payload);
+    },
   },
 });
 
-export const { loginUser, clearStore } = userSlice.actions;
+export const { loginUser, clearStore, setOpenedUser } = userSlice.actions;
 
 export default userSlice.reducer;
