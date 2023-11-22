@@ -9,7 +9,7 @@ import {
 
 import React, { useEffect, useState } from 'react';
 
-export default function Chat({ params }) {
+export default function User({ params }) {
   const [mount, setMount] = useState(false);
   useEffect(() => {
     setMount(true);
