@@ -15,7 +15,6 @@ export { default as PageBtnContainer } from './PageBtnContainer';
 export { default as SelectField } from './SelectField';
 export { default as List } from './List';
 export { default as UserChats } from './UserChats';
-export { default as SelectedChat } from './SelectedChat';
 export { default as ChatIcon } from './ChatIcon';
 export { default as HeaderSelectedChat } from './HeaderSelectedChat';
 export { default as BodySelectedChat } from './BodySelectedChat';

@@ -14,10 +14,12 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { loginUser } from '../GlobalRedux/Features/user/userSlice';
+import { useMainContext } from '@/contexts/MainContext';
 
 export default function SignUp() {
   const router = useRouter();
   const [formData, setFormData] = useState({});
+  const { socket } = useMainContext();
   const dispatch = useDispatch();
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -34,6 +36,7 @@ export default function SignUp() {
         secure: true,
       });
       dispatch(loginUser(data.user));
+      socket.emit('addUser', data.user.userId);
       router.push('/');
     },
     onError: (error) => {

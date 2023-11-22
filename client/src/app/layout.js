@@ -5,6 +5,7 @@ import ReactQueryProvider from '@/utils/ReactQueryProvider';
 import { ReduxProvider } from './GlobalRedux/ReduxProvider';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import MainProvider from '@/contexts/MainContext';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
@@ -17,9 +18,11 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <ReactQueryProvider>
           <ReduxProvider>
-            <Header />
-            {children}
-            {/* <Footer /> */}
+            <MainProvider>
+              <Header />
+              {children}
+              {/* <Footer /> */}
+            </MainProvider>
           </ReduxProvider>
           <ToastContainer position='top-center' />
         </ReactQueryProvider>

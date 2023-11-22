@@ -1,7 +1,9 @@
 'use client';
-import { SelectedChat, UserChats } from '@/components';
+import { UserChats } from '@/components';
+import { useMainContext } from '@/contexts/MainContext';
+import customFetch from '@/utils/axios';
 import React, { useEffect, useState } from 'react';
-
+import { useDispatch, useSelector } from 'react-redux';
 export default function Chat() {
   const [mount, setMount] = useState(false);
   useEffect(() => {

@@ -7,7 +7,6 @@ import { useSelector } from 'react-redux';
 export default function NavbarSign() {
   const { user } = useSelector((state) => state.user);
   const [mount, setMount] = useState(false);
-
   useEffect(() => {
     setMount(true);
   }, []);
@@ -15,20 +14,22 @@ export default function NavbarSign() {
     return;
   }
   return (
-    <Link href={user?.username ? '/profile' : '/signin'}>
-      {user?.username ? (
-        <img
-          src={`${
-            user.avatar.startsWith('https')
-              ? user.avatar
-              : domainUrl + user.avatar
-          }`}
-          alt='profile'
-          className='w-7 h-7 rounded-full object-cover'
-        />
-      ) : (
-        <li className='text-base-content hover:underline'>Sign In</li>
-      )}
-    </Link>
+    <li>
+      <Link href={user?.username ? '/profile' : '/signin'}>
+        {user?.username ? (
+          <img
+            src={`${
+              user.avatar.startsWith('https')
+                ? user.avatar
+                : domainUrl + user.avatar
+            }`}
+            alt='profile'
+            className='w-7 h-7 rounded-full object-cover'
+          />
+        ) : (
+          <span className='text-base-content hover:underline'>Sign In</span>
+        )}
+      </Link>
+    </li>
   );
 }

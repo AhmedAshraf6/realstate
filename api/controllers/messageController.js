@@ -20,20 +20,26 @@ const getAllMessages = async (req, res) => {
 const sendMessage = async (req, res) => {
   const { chatId } = req.params;
   const { userId } = req.user;
-  const { text } = req.body;
-  if (!text) {
-    throw new CustomError.BadRequestError('please provide text');
+  const { text, attachments } = req.body;
+  if (!text && attachments?.length === 0) {
+    throw new CustomError.BadRequestError('please provide data');
   }
   const selectedChat = await Chat.findById(chatId);
-
+  console.log(attachments);
   if (!selectedChat) {
     throw new CustomError.NotFoundError('Chat does not exist');
   }
   const message = await Message.create({
     sender: userId,
     text,
+    attachments,
     chatId: chatId,
   });
+  console.log(message);
+  await Chat.findByIdAndUpdate(chatId, {
+    lastMessage: message._id,
+  });
+
   res.status(StatusCodes.OK).json({ message });
 };
 

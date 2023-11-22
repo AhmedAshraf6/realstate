@@ -17,8 +17,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'github.com',
-        pathname: '/uploads/**',
+        hostname: 'lh3.googleusercontent.com',
       },
     ],
   },

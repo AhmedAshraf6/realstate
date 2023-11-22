@@ -9,6 +9,10 @@ const MessageSchema = new mongoose.Schema(
     text: {
       type: String,
     },
+    attachments: {
+      type: [String],
+      default: [],
+    },
     chatId: {
       type: mongoose.Schema.ObjectId,
       ref: 'Chat',

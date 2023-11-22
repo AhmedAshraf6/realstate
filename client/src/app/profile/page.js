@@ -5,7 +5,7 @@ import { clearStore, loginUser } from '../GlobalRedux/Features/user/userSlice';
 import { useRouter } from 'next/navigation';
 import { AllListings, ButtonSubmit, InputField, Title } from '@/components';
 import { useEffect, useRef, useState } from 'react';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import customFetch, {
   checkForUnauthorizedResponse,
   domainUrl,
@@ -16,6 +16,7 @@ import Link from 'next/link';
 
 export default function Profile() {
   const dispatch = useDispatch();
+  const queryClient = useQueryClient();
   const router = useRouter();
   const { user } = useSelector((state) => state.user);
   const [file, setFile] = useState('');
@@ -176,6 +177,7 @@ export default function Profile() {
               className='text-error font-semibold cursor-pointer'
               onClick={() => {
                 dispatch(clearStore());
+                queryClient.clear();
                 router.push('/');
               }}
             >

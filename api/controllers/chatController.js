@@ -7,10 +7,16 @@ const User = require('../models/User');
 const getAllChats = async (req, res) => {
   const chats = await Chat.find({
     members: { $in: [req.user.userId] },
-  }).populate({
-    path: 'members',
-    select: 'username avatar',
-  });
+  })
+    .sort('-updatedAt')
+    .populate({
+      path: 'members',
+      select: 'username avatar',
+    })
+    .populate({
+      path: 'lastMessage',
+      select: 'text sender chatId attachments',
+    });
   res.status(StatusCodes.OK).json({ chats });
 };
 const addNewChat = async (req, res) => {

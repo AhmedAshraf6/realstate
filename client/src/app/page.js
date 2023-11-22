@@ -32,9 +32,6 @@ export default async function page() {
     getRents(),
     getSales(),
   ]);
-  console.log(offers);
-  console.log(rents);
-  console.log(sales);
 
   return (
     <div className='align-element mt-10 sm:mt-24'>
