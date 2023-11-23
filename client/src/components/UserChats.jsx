@@ -78,51 +78,55 @@ export default function UserChats() {
         خاص
       </h3>
       <div className='flex flex-col gap-3  overflow-y-auto'>
-        {chats.map((chat) => {
-          const rightUser = chat.members.find(
-            (member) => member._id !== user.userId
-          );
+        {chats.length > 0 ? (
+          chats.map((chat) => {
+            const rightUser = chat.members.find(
+              (member) => member._id !== user.userId
+            );
 
-          return (
-            <div key={chat._id}>
-              {(chat?.lastMessage?.text ||
-                chat?.lastMessage?.attachments?.length > 0) && (
-                <Link
-                  className='flex gap-3 items-start border-b-[1px] border-gray-300 p-2'
-                  key={chat._id}
-                  href={`/chat/user/${chat._id}`}
-                  onClick={() => dispatch(setOpenedUser(rightUser))}
-                >
-                  <div className='avatar'>
-                    <div className='w-12 rounded-full '>
-                      <Image
-                        src={`${
-                          rightUser?.avatar?.startsWith('https')
-                            ? rightUser?.avatar
-                            : domainUrl + rightUser?.avatar
-                        }`}
-                        alt='image'
-                        width={500}
-                        height={500}
-                        placeholder='blur'
-                        blurDataURL='/spinner.svg'
-                      />
+            return (
+              <div key={chat._id}>
+                {(chat?.lastMessage?.text ||
+                  chat?.lastMessage?.attachments?.length > 0) && (
+                  <Link
+                    className='flex gap-3 items-start border-b-[1px] border-gray-300 p-2'
+                    key={chat._id}
+                    href={`/chat/user/${chat._id}`}
+                    onClick={() => dispatch(setOpenedUser(rightUser))}
+                  >
+                    <div className='avatar'>
+                      <div className='w-12 rounded-full '>
+                        <Image
+                          src={`${
+                            rightUser?.avatar?.startsWith('https')
+                              ? rightUser?.avatar
+                              : domainUrl + rightUser?.avatar
+                          }`}
+                          alt='image'
+                          width={500}
+                          height={500}
+                          placeholder='blur'
+                          blurDataURL='/spinner.svg'
+                        />
+                      </div>
                     </div>
-                  </div>
 
-                  <div className='truncate'>
-                    <h2>{rightUser?.username}</h2>
-                    <span className='text-gray-300 '>
-                      {chat?.lastMessage?.attachments?.length > 0
-                        ? 'صورة'
-                        : chat?.lastMessage?.text}
-                    </span>
-                  </div>
-                </Link>
-              )}
-            </div>
-          );
-        })}
+                    <div className='truncate'>
+                      <h2>{rightUser?.username}</h2>
+                      <span className='text-gray-300 '>
+                        {chat?.lastMessage?.attachments?.length > 0
+                          ? 'صورة'
+                          : chat?.lastMessage?.text}
+                      </span>
+                    </div>
+                  </Link>
+                )}
+              </div>
+            );
+          })
+        ) : (
+          <h3>لا يوجد محادثات</h3>
+        )}
       </div>
     </div>
   );
