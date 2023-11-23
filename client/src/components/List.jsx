@@ -55,14 +55,14 @@ export default function List({ list }) {
           <span className='text-gray-500 text-xs'>{address}</span>
         </p>
         <div className='flex flex-wrap gap-2 sm:gap-3'>
-          <div className='flex items-center text-gray-700 '>
+          <div className='flex items-center text-base-content '>
             <TbBedFilled className='text-xs' />
             <span>
               {bedrooms} Bed
               {bedrooms.length > 1 && 's'}
             </span>
           </div>
-          <div className='flex items-center text-gray-700 '>
+          <div className='flex items-center text-base-content '>
             <FaBath className='text-xs' />
             <span>
               {bathrooms} Bath

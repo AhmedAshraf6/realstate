@@ -55,7 +55,7 @@ export default function ButtonContactWithSeller({ sellerId }) {
       className='btn btn-neutral  self-start'
       onClick={() => mutate(sellerId)}
     >
-      Contact with seller
+      تواصل مع البائع
     </button>
   );
 }

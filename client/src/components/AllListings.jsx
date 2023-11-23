@@ -59,16 +59,18 @@ export default function AllListings() {
   // return;
   return (
     <div className='mt-4 sm:mt-6'>
-      <h1 className='text-lg sm:text-2xl font-semibold  '>Your Listings</h1>
+      <h1 className='text-lg sm:text-2xl font-semibold  '>عقاراتك</h1>
       <div className='text-start flex flex-col gap-y-4 sm:gap-y-6 mt-2 sm:mt-4'>
         {listings?.length === 0 ? (
           <div className='flex justify-between items-center my-3 sm:my-5'>
-            <h1 className='text-lg sm:text-2xl font-semibold  '>No Listings</h1>
+            <h1 className='text-lg sm:text-2xl font-semibold  '>
+              لا يوجد اي عقار
+            </h1>
             <Link
               href='profile/create-listing'
               className='btn btn-accent btn-xs add List'
             >
-              Add List
+              اضافة عقار
             </Link>
           </div>
         ) : (
@@ -100,13 +102,13 @@ export default function AllListings() {
                   className='text-error font-bold cursor-pointer'
                   onClick={() => deleteList(list._id)}
                 >
-                  Delete
+                  حذف
                 </span>
                 <Link
                   className='text-accent font-bold cursor-pointer'
                   href={`profile/edit-listing/${list._id}`}
                 >
-                  Edit
+                  تعديل
                 </Link>
               </div>
             </div>

@@ -24,55 +24,55 @@ const SearchContainer = () => {
   return (
     <form className='col-span-1 flex flex-col gap-3 mt-4 p-6'>
       <InputField
-        placeHolder='Search...'
+        placeHolder='ابحث...'
         type='text'
         name='search'
         value={search}
         handleChange={handleSearch}
       />
-      <span className='font-bold'> Type:</span>
+      <span className='font-bold'> النوع:</span>
       <div className='flex flex-wrap gap-3'>
         <CheckField
           name='all'
           handleChange={handleSearch}
           checked={type === 'all'}
-          label='Rent&Sale'
+          label='ايجار&بيع'
         />
         <CheckField
           name='rent'
           handleChange={handleSearch}
           checked={type === 'rent'}
-          label='Rent'
+          label='ايجار'
         />
         <CheckField
           name='sale'
           handleChange={handleSearch}
           checked={type === 'sale'}
-          label='Sell'
+          label='بيع'
         />
       </div>
-      <span className='font-bold'> Extra option:</span>
+      <span className='font-bold'> خيارات اضافية:</span>
       <div className='flex flex-wrap gap-3'>
         <CheckField
           name='offer'
           handleChange={handleSearch}
           checked={offer}
-          label='Offer'
+          label='عرض'
         />
         <CheckField
           name='furnished'
           handleChange={handleSearch}
           checked={furnished}
-          label='Furnished'
+          label='مفروشة'
         />
         <CheckField
           name='parking'
           handleChange={handleSearch}
           checked={parking}
-          label='Parking'
+          label='ركن للعربية'
         />
       </div>
-      <span className='font-bold'> Sort:</span>
+      <span className='font-bold'> ترتيب:</span>
       <div className='flex flex-wrap gap-3'>
         <SelectField
           name='sort'

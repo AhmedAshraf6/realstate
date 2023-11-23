@@ -6,7 +6,7 @@
   @apply max-w-6xl mx-auto px-4 sm:px-8;
 }
 .paragraph {
-  @apply text-slate-400 leading-7 text-sm;
+  @apply text-base-content leading-7 text-sm;
 }
 .grid-template-fit {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));

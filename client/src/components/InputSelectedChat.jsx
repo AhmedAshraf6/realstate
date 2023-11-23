@@ -138,20 +138,24 @@ export default function InputSelectedChat({ chatId }) {
         multiple
       />
       <MdAttachFile
-        className=' relative left-2  top-1/2 -translate-y-[50%] cursor-pointer text-xl'
+        className=' relative right-2  top-1/2 -translate-y-[50%] cursor-pointer text-xl'
         onClick={() => fileRef.current.click()}
       />
       <div className='form-control focus:border-none  flex-grow'>
         <input
-          placeholder='Type a message'
+          placeholder='اكتب رسالة ...'
           className='input  input-sm sm:input-md w-full focus:outline-none'
           type='text'
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
       </div>
-      <button type='submit' onClick={hadnleSubmit}>
-        <LuSendHorizonal className='relative right-2  top-1/2 -translate-y-[50%] cursor-pointer text-xl' />
+      <button
+        type='submit'
+        onClick={hadnleSubmit}
+        className='relative left-2  top-1/2 -translate-y-[50%]'
+      >
+        <LuSendHorizonal className=' cursor-pointer text-xl' />
       </button>
     </form>
   );

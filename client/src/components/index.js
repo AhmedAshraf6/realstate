@@ -20,3 +20,4 @@ export { default as HeaderSelectedChat } from './HeaderSelectedChat';
 export { default as BodySelectedChat } from './BodySelectedChat';
 export { default as InputSelectedChat } from './InputSelectedChat';
 export { default as ButtonContactWithSeller } from './ButtonContactWithSeller';
+export { default as ToggleTheme } from './ToggleTheme';

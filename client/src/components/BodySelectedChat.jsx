@@ -70,7 +70,7 @@ export default function BodySelectedChat({ chatId }) {
     return <Loading />;
   }
   return (
-    <div className='flex-grow bg-base-20 overflow-y-auto '>
+    <div className='flex-grow bg-base-200 overflow-y-auto '>
       {messages?.map((message) => {
         return (
           <div key={message._id} ref={scrollRef}>

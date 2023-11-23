@@ -8,7 +8,6 @@ import { io } from 'socket.io-client';
 const MainContext = createContext();
 const getSocket = () => {
   const socket = io(domainUrl);
-  console.log(socket);
   return socket;
 };
 

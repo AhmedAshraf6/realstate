@@ -20,7 +20,7 @@ export default function ConfirmModal({ open, handleToggle, confirm }) {
         </form>
         <div className='text-center'>
           <h3 className='text-base-content font-semibold '>
-            Are you sure you want to delete the account?
+            هل أنت متأكد من رغبتك في حذف الحساب
           </h3>
           <button
             className='btn btn-neutral btn-sm mt-4'
@@ -29,7 +29,7 @@ export default function ConfirmModal({ open, handleToggle, confirm }) {
               handleToggle();
             }}
           >
-            Confirm
+            تأكيد
           </button>
         </div>
       </div>

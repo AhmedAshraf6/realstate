@@ -50,20 +50,20 @@ export default async function page() {
   return (
     <div className='align-element mt-10 sm:mt-24'>
       <div className='max-w-2xl'>
-        <Title title='We provide you with the most important statistics and investment ratios in a simplified manner ' />
+        <Title title='نقدم لك أهم الإحصائيات ونسب الاستثمار بشكل مبسط ' />
         <p className='paragraph'>
-          Ahmed Estate will help you find your home fast, easy and comfortable.
-          Our expert support are always available.
+          سوف تساعدك شركة أحمد العقارية في العثور على منزلك بسرعة وسهولة وراحة.
+          دعم الخبراء لدينا متاح دائمًا.
         </p>
       </div>
       <div className='mt-4 sm:mt-6'>
-        <h3 className='text-lg sm:text-xl text-neutral font-bold'>
-          Recent Offers
+        <h3 className='text-lg sm:text-xl text-base-content font-bold'>
+          احدث العروض
         </h3>
         <div className='flex items-center gap-2'>
-          <span className='text-lg'>for more offers:</span>
+          <span className='text-lg'>للمزيد من العروض:</span>
           <Link href={'search?offer=true'} className='btn btn-neutral btn-xs'>
-            View More
+            مشاهدة المزيد
           </Link>
         </div>
         <div className='mt-3 grid sm:grid-cols-3 gap-3'>
@@ -73,13 +73,13 @@ export default async function page() {
         </div>
       </div>
       <div className='mt-4 sm:mt-6'>
-        <h3 className='text-lg sm:text-xl text-neutral font-bold'>
-          Recent places for rents
+        <h3 className='text-lg sm:text-xl text-base-content font-bold'>
+          أحدث العقارات للبيع
         </h3>
         <div className='flex items-center gap-2'>
-          <span className='text-lg'>show more places for rent:</span>
+          <span className='text-lg'>للمزيد من عقارات للبيع:</span>
           <Link href={'search?type=rent'} className='btn btn-neutral btn-xs'>
-            View More
+            مشاهدة المزيد
           </Link>
         </div>
         <div className='mt-3 grid sm:grid-cols-3 gap-3'>
@@ -89,13 +89,13 @@ export default async function page() {
         </div>
       </div>
       <div className='mt-4 sm:mt-6'>
-        <h3 className='text-lg sm:text-xl text-neutral font-bold'>
-          Sales places for rents
+        <h3 className='text-lg sm:text-xl text-base-content font-bold'>
+          أحدث العقارات للايجار
         </h3>
         <div className='flex items-center gap-2'>
-          <span className='text-lg'>show more places for sale:</span>
+          <span className='text-lg'>للمزيد من عقارات للايجار:</span>
           <Link href={'search?type=rent'} className='btn btn-neutral btn-xs'>
-            View More
+            مشاهدة المزيد
           </Link>
         </div>
         <div className='mt-3 grid sm:grid-cols-3 gap-3'>

@@ -116,7 +116,7 @@ export default function Profile() {
     <>
       <div className='align-element mt-10 sm:mt-24'>
         <div className='max-w-lg mx-auto text-center'>
-          <Title title='Profile' />
+          <Title title='الملف الشخصي' />
           <input
             onChange={(e) => setFile(e.target.files[0])}
             type='file'
@@ -156,12 +156,12 @@ export default function Profile() {
               handleChange={handleChange}
             />
 
-            <ButtonSubmit button='Update' isLoading={isLoadingUpdateUser} />
+            <ButtonSubmit button='تحديث' isLoading={isLoadingUpdateUser} />
             <Link
               className='btn btn-accent btn-sm sm:btn-md w-full text-xs sm:text-base'
               href='profile/create-listing'
             >
-              Create Listing
+              اضافة عقار
             </Link>
           </form>
           <div className='flex justify-between gap-2 mt-4 sm:mt-6'>
@@ -169,7 +169,7 @@ export default function Profile() {
               className='text-error font-semibold cursor-pointer'
               onClick={handleToggle}
             >
-              Delete Account
+              حذف الحساب
             </span>
             {/* Open the modal using document.getElementById('ID').showModal() method */}
 
@@ -181,7 +181,7 @@ export default function Profile() {
                 router.push('/');
               }}
             >
-              Sign Out
+              تسجيل خروج
             </span>
           </div>
           {/* Show Listing */}
@@ -190,7 +190,7 @@ export default function Profile() {
               className='text-accent font-semibold cursor-pointer'
               onClick={() => setShowListing(!showListing)}
             >
-              Show listings
+              اظهار عقاراتي
             </span>
             {showListing && <AllListings />}
           </div>

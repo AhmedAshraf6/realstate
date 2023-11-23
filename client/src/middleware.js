@@ -16,5 +16,5 @@ export function middleware(request) {
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ['/profile/:path*', '/signin', '/signup'],
+  matcher: ['/profile/:path*', '/chat/:path*', '/signin', '/signup'],
 };

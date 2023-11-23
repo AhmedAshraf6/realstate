@@ -139,14 +139,14 @@ export default function CreateListing() {
 
   return (
     <div className='align-element mt-10 sm:mt-24 '>
-      <Title title='Create Listing' center='text-center' />
+      <Title title='اضافة عقار' center='text-center' />
       <form
         onSubmit={handleSubmit}
         className='grid md:grid-cols-2 gap-4 md:gap-6'
       >
         <div className='flex flex-col gap-y-4 sm:gap-y-6'>
           <InputField
-            placeHolder='Name'
+            placeHolder='اسم العقار'
             type='text'
             name='name'
             handleChange={handleChange}
@@ -156,7 +156,7 @@ export default function CreateListing() {
             required='required'
           />
           <TextArea
-            placeHolder='Description'
+            placeHolder='الوصف'
             name='description'
             handleChange={handleChange}
             minLength='3'
@@ -165,7 +165,7 @@ export default function CreateListing() {
             required='required'
           />
           <InputField
-            placeHolder='Address'
+            placeHolder='العنوان بالتفصيل'
             type='text'
             name='address'
             handleChange={handleChange}
@@ -183,7 +183,7 @@ export default function CreateListing() {
                 onChange={handleChange}
                 checked={formData.type === 'sale'}
               />
-              <span>Sell</span>
+              <span>بيع</span>
             </div>
             <div className='flex gap-2'>
               <input
@@ -193,7 +193,7 @@ export default function CreateListing() {
                 onChange={handleChange}
                 checked={formData.type === 'rent'}
               />
-              <span>Rent</span>
+              <span>ايجار</span>
             </div>
             <div className='flex gap-2'>
               <input
@@ -203,7 +203,7 @@ export default function CreateListing() {
                 onChange={handleChange}
                 checked={formData.parking}
               />
-              <span>Parking Spot</span>
+              <span>ركن للعربيات</span>
             </div>
             <div className='flex gap-2'>
               <input
@@ -213,7 +213,7 @@ export default function CreateListing() {
                 onChange={handleChange}
                 checked={formData.furnished}
               />
-              <span>Furnished</span>
+              <span>مفروشة</span>
             </div>
             <div className='flex gap-2'>
               <input
@@ -223,7 +223,7 @@ export default function CreateListing() {
                 onChange={handleChange}
                 checked={formData.offer}
               />
-              <span>Offer</span>
+              <span>عرض</span>
             </div>
           </div>
 
@@ -237,7 +237,7 @@ export default function CreateListing() {
                 min='1'
                 max='10'
               />
-              <span>Beds</span>
+              <span>الغرف</span>
             </div>
             <div className='flex items-center gap-2'>
               <InputField
@@ -248,7 +248,7 @@ export default function CreateListing() {
                 min='1'
                 max='10'
               />
-              <span>Baths</span>
+              <span>دورة مياة</span>
             </div>
           </div>
           <div className='flex flex-col items-start gap-4 md:gap-6'>
@@ -262,8 +262,8 @@ export default function CreateListing() {
                 max='1000000000'
               />
               <div className='whitespace-nowrap'>
-                <h2>Regular Price</h2>
-                <span className='text-xs font-semibold'>($ / month)</span>
+                <h2>السعر الأساسي</h2>
+                <span className='text-xs font-semibold'>(جنيه / شهر)</span>
               </div>
             </div>
             {formData.offer && (
@@ -277,8 +277,8 @@ export default function CreateListing() {
                   max='1000000000'
                 />
                 <div className='whitespace-nowrap'>
-                  <h2 className=''>Discounted Price</h2>
-                  <span className='text-xs font-semibold'>($ / month)</span>
+                  <h2>السعر المخفض</h2>
+                  <span className='text-xs font-semibold'>(جنيه/ شهر)</span>
                 </div>
               </div>
             )}
@@ -286,9 +286,9 @@ export default function CreateListing() {
         </div>
         <div className='flex flex-col gap-y-4  sm:gap-y-6'>
           <h2>
-            <span className='font-semibold '>Images:</span>
+            <span className='font-semibold '>الصور:</span>
             <span className='text-neutral-content mx-2'>
-              The first image will be the cover max (6)
+              أول صورة هتكون الغلاف وأقصي عدد من الصور (6)
             </span>
           </h2>
           <div className='flex flex-wrap sm:flex-nowrap gap-3'>
@@ -308,7 +308,7 @@ export default function CreateListing() {
               {isLoadingUploadImages ? (
                 <span className='loading loading-spinner loading-sm'></span>
               ) : (
-                'Upload'
+                'رفع'
               )}
             </button>
           </div>
@@ -334,12 +334,12 @@ export default function CreateListing() {
                     handleDeleteImage(index);
                   }}
                 >
-                  delete
+                  حذف
                 </span>
               </div>
             ))}
           <ButtonSubmit
-            button='Create Listing'
+            button='اضافة عقار'
             isLoading={isLoadingAddListing || isLoadingUploadImages}
           />
         </div>

@@ -15,7 +15,7 @@ export default function Chat() {
   return (
     <div className='align-element grid grid-cols-3 h-[calc(100vh-64px)]'>
       <UserChats />
-      <h3>select chat</h3>
+      <h3>اختر محادثة لعرضها</h3>
     </div>
   );
 }

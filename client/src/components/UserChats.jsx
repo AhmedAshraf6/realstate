@@ -73,9 +73,9 @@ export default function UserChats() {
   }, [socket]);
 
   return (
-    <div className='col-span-1 rounded-lg border-2 h-[calc(100vh-64px)]  overflow-y-auto'>
-      <h3 className='font-semibold bg-base-300 px-2 py-5 border-b-2 border-gray-300'>
-        Inbox
+    <div className='col-span-1 rounded-lg border-[1px] h-[calc(100vh-64px)] border-gray-300 overflow-y-auto'>
+      <h3 className='font-semibold bg-base-300 px-2 py-5 border-b-[1px] border-gray-300'>
+        خاص
       </h3>
       <div className='flex flex-col gap-3  overflow-y-auto'>
         {chats.map((chat) => {
@@ -88,7 +88,7 @@ export default function UserChats() {
               {(chat?.lastMessage?.text ||
                 chat?.lastMessage?.attachments?.length > 0) && (
                 <Link
-                  className='flex gap-3 items-start border-b-2 border-gray-300 p-2'
+                  className='flex gap-3 items-start border-b-[1px] border-gray-300 p-2'
                   key={chat._id}
                   href={`/chat/user/${chat._id}`}
                   onClick={() => dispatch(setOpenedUser(rightUser))}

@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 export default function HeaderSelectedChat() {
   const { openedUser } = useSelector((store) => store.user);
   return (
-    <div className='flex gap-3 items-center border-b-2 border-gray-300 px-2 py-2'>
+    <div className='flex gap-3 items-center border-b-[1px] border-gray-300 px-2 py-2'>
       <div className='avatar'>
         <div className='w-12 rounded-full '>
           <Image

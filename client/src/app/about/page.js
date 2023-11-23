@@ -3,28 +3,25 @@ import React from 'react';
 export default function page() {
   return (
     <div className='py-20 px-4 max-w-6xl mx-auto'>
-      <h1 className='text-3xl font-bold mb-4 text-slate-800'>
-        About Our Estate
+      <h1 className='text-3xl font-bold mb-4 text-base-content '>
+        حول عقاراتنا
       </h1>
-      <p className='mb-4 text-slate-700'>
-        Ahmed Estate is a leading real estate agency that specializes in helping
-        clients buy, sell, and rent properties in the most desirable
-        neighborhoods. Our team of experienced agents is dedicated to providing
-        exceptional service and making the buying and selling process as smooth
-        as possible.
+      <p className='mb-4 paragraph'>
+        أحمد العقارية هي وكالة عقارية رائدة متخصصة في المساعدة يقوم العملاء
+        بشراء وبيع وتأجير العقارات في أكثر المناطق المرغوبة أحياء. لدينا فريق من
+        الوكلاء ذوي الخبرة مكرس لتقديم خدمة استثنائية وجعل عملية البيع والشراء
+        سلسة بقدر الإمكان.
       </p>
-      <p className='mb-4 text-slate-700'>
-        Our mission is to help our clients achieve their real estate goals by
-        providing expert advice, personalized service, and a deep understanding
-        of the local market. Whether you are looking to buy, sell, or rent a
-        property, we are here to help you every step of the way.
+      <p className='mb-4 paragraph'>
+        مهمتنا هي مساعدة عملائنا على تحقيق أهدافهم العقارية من خلال تقديم مشورة
+        الخبراء والخدمة الشخصية والفهم العميق من السوق المحلية. سواء كنت تتطلع
+        لشراء أو بيع أو استئجار الملكية، نحن هنا لمساعدتك في كل خطوة على الطريق.
       </p>
-      <p className='mb-4 text-slate-700'>
-        Our team of agents has a wealth of experience and knowledge in the real
-        estate industry, and we are committed to providing the highest level of
-        service to our clients. We believe that buying or selling a property
-        should be an exciting and rewarding experience, and we are dedicated to
-        making that a reality for each and every one of our clients.
+      <p className='mb-4 paragraph'>
+        يتمتع فريق الوكلاء لدينا بثروة من الخبرة والمعرفة على أرض الواقع صناعة
+        العقارات، ونحن ملتزمون بتقديم أعلى مستوى من خدمة لعملائنا. ونحن نعتقد أن
+        شراء أو بيع عقار ينبغي أن تكون تجربة مثيرة ومجزية، ونحن ملتزمون بذلك مما
+        يجعل ذلك حقيقة لكل واحد من عملائنا.
       </p>
     </div>
   );
