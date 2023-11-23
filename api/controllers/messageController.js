@@ -25,7 +25,6 @@ const sendMessage = async (req, res) => {
     throw new CustomError.BadRequestError('please provide data');
   }
   const selectedChat = await Chat.findById(chatId);
-  console.log(attachments);
   if (!selectedChat) {
     throw new CustomError.NotFoundError('Chat does not exist');
   }
@@ -35,7 +34,6 @@ const sendMessage = async (req, res) => {
     attachments,
     chatId: chatId,
   });
-  console.log(message);
   await Chat.findByIdAndUpdate(chatId, {
     lastMessage: message._id,
   });

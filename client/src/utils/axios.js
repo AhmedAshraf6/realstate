@@ -4,12 +4,12 @@ import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 const customFetch = axios.create({
-  baseURL: 'https://ahmed-estate.onrender.com/api/v1',
+  baseURL: 'http://localhost:5000/api/v1',
 });
 export const customFetchNoAuth = axios.create({
-  baseURL: 'https://ahmed-estate.onrender.com/api/v1',
+  baseURL: 'http://localhost:5000/api/v1',
 });
-export const domainUrl = 'https://ahmed-estate.onrender.com';
+export const domainUrl = 'http://localhost:5000';
 customFetch.interceptors.request.use((config) => {
   const token = Cookies.get('token');
 
