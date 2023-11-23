@@ -1,6 +1,6 @@
 import { Inter } from 'next/font/google';
 import './index.css';
-import { Footer, Header } from '@/components';
+import { Header } from '@/components';
 import ReactQueryProvider from '@/utils/ReactQueryProvider';
 import { ReduxProvider } from './GlobalRedux/ReduxProvider';
 import { ToastContainer } from 'react-toastify';
