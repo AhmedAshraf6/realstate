@@ -55,8 +55,8 @@ export default function PageBtnContainer({ numOfPages }) {
         className='btn btn-neutral btn-outline border-none btn-sm sm:btn-md sm:text-base'
         onClick={nextPage}
       >
-        <HiChevronDoubleRight />
         التالي
+        <HiChevronDoubleRight />
       </button>
     </div>
   );
