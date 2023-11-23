@@ -43,7 +43,7 @@ export default function List({ list }) {
           {name.length > 15 ? `${name.slice(0, 15)}..` : name}
         </h2>
 
-        <div className='badge badge-accent'>${regularPrice}</div>
+        <div className='badge badge-accent'>{regularPrice}جنيه</div>
 
         <p className='text-xs'>
           {description.length > 50

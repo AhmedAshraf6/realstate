@@ -2,7 +2,7 @@ import React from 'react';
 export default function ButtonSubmit({ button, isLoading }) {
   return (
     <button
-      className='btn btn-neutral btn-sm sm:btn-md w-full text-xs sm:text-base'
+      className='btn btn-neutral btn-sm sm:btn-md sm:text-base w-full text-xs '
       disabled={isLoading}
       type='submit'
     >

@@ -51,8 +51,8 @@ export default function SignUpWithGoogle() {
       onClick={handleGoogleClick}
       className='btn btn-error text-error-content text-xs sm:text-base h-full btn-sm sm:btn-md mt-4 sm:mt-6 capitalize font-bold w-full flex flex-wrap'
     >
+      <span> متابعة باستخدام جوجل</span>
       <FcGoogle />
-      <span> continue with google</span>
     </button>
   );
 }

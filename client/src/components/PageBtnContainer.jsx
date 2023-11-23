@@ -1,4 +1,5 @@
-import React from 'react';
+'use client';
+import React, { useEffect } from 'react';
 import { changePage } from '@/app/GlobalRedux/Features/filters/filterSlice';
 import { HiChevronDoubleLeft, HiChevronDoubleRight } from 'react-icons/hi';
 import { useSelector, useDispatch } from 'react-redux';
@@ -23,22 +24,25 @@ export default function PageBtnContainer({ numOfPages }) {
     }
     dispatch(changePage(newPage));
   };
+  useEffect(() => {
+    scrollTo(0, 0);
+  }, [page]);
   return (
-    <div className='mt-4 sm:mt-10 flex items-center justify-end gap-3'>
+    <div className='mt-4 sm:mt-10 flex items-center justify-start gap-3'>
       <button
-        className='btn btn-neutral btn-outline border-none'
+        className='btn btn-neutral btn-outline border-none btn-sm sm:btn-md sm:text-base'
         onClick={prevPage}
       >
+        السابق
         <HiChevronDoubleLeft />
-        Prev
       </button>
       <div>
         {pages.map((pageNumber) => (
           <span
-            className={`py-2 px-5 text-center text-xl cursor-pointer rounded-md font-bold ${
+            className={`py-1 px-3 sm:py-2 sm:px-5 text-center text-xl cursor-pointer rounded-md font-bold ${
               page === pageNumber
-                ? 'text-neutral-content bg-neutral'
-                : 'text-neutral bg-slate-200'
+                ? 'text-accent-content bg-accent'
+                : 'text-neutral bg-base-content'
             }`}
             key={pageNumber}
             onClick={() => dispatch(changePage(pageNumber))}
@@ -48,11 +52,11 @@ export default function PageBtnContainer({ numOfPages }) {
         ))}
       </div>
       <button
-        className='btn btn-neutral btn-outline border-none'
+        className='btn btn-neutral btn-outline border-none btn-sm sm:btn-md sm:text-base'
         onClick={nextPage}
       >
-        Next
         <HiChevronDoubleRight />
+        التالي
       </button>
     </div>
   );

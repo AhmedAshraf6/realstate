@@ -57,30 +57,30 @@ export default function SignUp() {
   return (
     <div className='align-element mt-10 sm:mt-15'>
       <div className='max-w-lg mx-auto text-center'>
-        <Title title='Sign In' />
+        <Title title='تسجيل دخول' />
         <form
           onSubmit={handleSubmit}
           className='flex flex-col gap-y-4 sm:gap-6'
         >
           <InputField
-            placeHolder='Email'
+            placeHolder='البريد الالكتروني'
             type='email'
             name='email'
             handleChange={handleChange}
           />
           <InputField
-            placeHolder='Password'
+            placeHolder='كلمة السر'
             type='password'
             name='password'
             handleChange={handleChange}
           />
-          <ButtonSubmit button='Sign In' isLoading={isLoading} />
+          <ButtonSubmit button='تسجيل دخول' isLoading={isLoading} />
         </form>
         <SignUpWithGoogle />
         <div className='mt-4 sm:mt-6'>
-          <span>Don not have account ?</span>
+          <span>ليس لديك حساب؟</span>
           <Link href='/signup' className='text-primary mx-2 whitespace-nowrap'>
-            Sign Up
+            تسجيل حساب
           </Link>
         </div>
       </div>

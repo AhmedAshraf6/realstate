@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
-import { FaSearch } from 'react-icons/fa';
-import { ChatIcon, NavbarSign, ToggleTheme } from '.';
+import { ChatIcon, NavbarSign, SearchHeader, ToggleTheme } from '.';
 export default function Header() {
   return (
     <nav className='bg-base-300 shadow-md'>
@@ -13,16 +12,7 @@ export default function Header() {
           <span>عقارات</span>
           <span>أحمد</span>
         </Link>
-        <form className='relative'>
-          <div className='form-control '>
-            <input
-              type='text'
-              placeholder='بحث'
-              className='input input-bordered input-sm sm:input-md w-32 md:w-auto'
-            />
-          </div>
-          <FaSearch className='text-lg text-base-content absolute top-2 sm:top-3 left-5' />
-        </form>
+        <SearchHeader />
         <ul className='flex gap-4'>
           <li className='hidden sm:inline text-base-content hover:underline'>
             <Link href='/'>الرئيسية</Link>

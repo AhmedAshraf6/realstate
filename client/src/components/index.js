@@ -21,3 +21,4 @@ export { default as BodySelectedChat } from './BodySelectedChat';
 export { default as InputSelectedChat } from './InputSelectedChat';
 export { default as ButtonContactWithSeller } from './ButtonContactWithSeller';
 export { default as ToggleTheme } from './ToggleTheme';
+export { default as SearchHeader } from './SearchHeader';

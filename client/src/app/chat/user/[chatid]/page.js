@@ -18,7 +18,7 @@ export default function User({ params }) {
     return;
   }
   return (
-    <div className='align-element grid grid-cols-3 h-[calc(100vh-64px)]'>
+    <div className='align-element grid sm:grid-cols-3 h-[calc(100vh-64px)]'>
       <UserChats />
       <div className='sm:col-span-2 rounded-lg border-[1px]  flex flex-col h-[calc(100vh-64px)]'>
         <HeaderSelectedChat />

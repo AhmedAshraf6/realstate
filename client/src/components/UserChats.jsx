@@ -97,9 +97,9 @@ export default function UserChats() {
                     <div className='w-12 rounded-full '>
                       <Image
                         src={`${
-                          rightUser.avatar.startsWith('https')
-                            ? rightUser.avatar
-                            : domainUrl + rightUser.avatar
+                          rightUser?.avatar?.startsWith('https')
+                            ? rightUser?.avatar
+                            : domainUrl + rightUser?.avatar
                         }`}
                         alt='image'
                         width={500}
@@ -111,7 +111,7 @@ export default function UserChats() {
                   </div>
 
                   <div className='truncate'>
-                    <h2>{rightUser.username}</h2>
+                    <h2>{rightUser?.username}</h2>
                     <span className='text-gray-300 '>
                       {chat?.lastMessage?.attachments?.length > 0
                         ? 'صورة'
